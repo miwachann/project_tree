@@ -1,0 +1,698 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta name="keywords" content="Aoki,Atsushi,Smalltalk,Smalltalker,Program,Programmer,Object,Oriented,Programming">
+<meta name="description" content="プロジェクト演習のホームページ">
+<meta name="author" content="AOKI Atsushi">
+<link rev="made" href="index.html">
+<link rel="index" href="index.html">
+<style type="text/css">
+<!--
+body {
+  background-color : #ffffff;
+  margin : 20px;
+  padding : 10px;
+  font-family : serif;
+  font-size : 10pt;
+}
+a {
+  text-decoration : underline;
+  color : #000000;
+}
+a:link {
+  background-color : #ffddbb;
+}
+a:visited {
+  background-color : #ccffcc;
+}
+a:hover {
+  background-color : #dddddd;
+}
+a:active {
+  background-color : #dddddd;
+}
+div.belt {
+  background-color : #eeeeee;
+  padding : 0px 4px;
+}
+div.belt-yellow {
+  background-color : #ffffcc;
+  padding : 0px 4px;
+}
+div.belt-blue {
+  background-color : #ddeeff;
+  padding : 0px 4px;
+}
+div.right-small {
+  text-align : right;
+  font-size : 8pt;
+}
+img.border {
+  border-width : 1px;
+  border-color : #000000;
+  vertical-align : middle;
+}
+img.borderless {
+  border-width : 0px;
+  vertical-align : middle;
+}
+p.belt {
+  background-color : #ffeedd;
+  padding : 4px 8px;
+}
+p.belt-blue {
+  background-color : #ddeeff;
+  padding : 4px 8px;
+}
+pre.belt {
+  background-color : #ddeeff;
+  padding : 4px 8px;
+}
+pre.belt-yellow {
+  background-color : #ffffcc;
+  padding : 4px 8px;
+}
+table {
+  border-style : solid;
+  border-width : 0px;
+  border-color : #000000;
+  font-family : serif;
+  font-size : 10pt;
+}
+table.profile {
+  border-style : solid;
+  border-width : 0px;
+  border-color : #000000;
+  font-family : serif;
+  font-size : 10pt;
+  margin-top : 8px;
+  margin-left : 8px;
+  margin-right : 8px;
+  margin-bottom : 8px;
+}
+table.belt {
+  border-style : solid;
+  border-width : 0px;
+  border-color : #000000;
+  background-color : #ffeedd;
+  padding : 0px 0px;
+  width : 100%;
+}
+table.content {
+  border-style : solid;
+  border-width : 0px;
+  border-color : #000000;
+  padding : 2px 4px;
+}
+table.font-fixed {
+  border-style : solid;
+  border-width : 0px;
+  border-color : #000000;
+  padding : 2px 4px;
+  font-family : monospace;
+}
+table.nest {
+  border-style : solid;
+  border-width : 0px;
+  border-color : #000000;
+  padding : 0px 0px;
+}
+td {
+  padding : 0px 0px;
+  vertical-align : middle;
+}
+td.center {
+  text-align : center;
+}
+td.center-half {
+  text-align : center;
+  width : 50%;
+  font-size : 8pt;
+}
+td.center-small {
+  text-align : center;
+  font-size : 8pt;
+  padding : 0px 4px;
+}
+td.center-small-nopadding {
+  text-align : center;
+  font-size : 8pt;
+  padding : 0px 0px;
+}
+td.center-white {
+  text-align : center;
+  background-color : #ffffff;
+}
+td.center-small-white {
+  text-align : center;
+  font-size : 8pt;
+  background-color : #ffffff;
+}
+td.center-border1 {
+  text-align : center;
+  vertical-align : middle;
+  empty-cells : show;
+  border-style : solid;
+  border-width : 1px;
+  border-color : #ffc080;
+  width : 22px;
+  height : 22px;
+}
+td.left-small {
+  text-align : left;
+  font-size : 8pt;
+  padding : 0px 4px;
+}
+td.left-small-white {
+  text-align : left;
+  font-size : 8pt;
+  padding : 0px 4px;
+  background-color : #ffffff;
+}
+td.right-small {
+  text-align : right;
+  font-size : 8pt;
+  padding : 0px 4px;
+}
+td.right-small-white {
+  text-align : right;
+  font-size : 8pt;
+  padding : 0px 4px;
+  background-color : #ffffff;
+}
+th {
+  padding : 0px 0px;
+  vertical-align : middle;
+}
+#menu {
+  margin: 0px 0px 0px 0px;
+  padding: 0px;
+  height: 32px;
+}
+#menu ul {
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+  text-align: center;
+  clear: both;
+}
+#menu li {
+  margin: 0px 5px 0px 0px;
+  padding: 0px;
+  float: left;
+}
+#menu a {
+  display: block;
+  padding: 2px 4px;
+  text-decoration: none;
+  margin: 0px;
+  font-weight: bold;
+  background: #FFFFFF;
+  color: #333333;
+  border: 1px solid #666666;
+}
+#menu a:hover {
+  display: block;
+  padding: 2px 4px;
+  border-bottom: 1px solid #000000;
+  text-decoration: none;
+  background: #FFCC66;
+}
+#menu .current {
+  background-color: #F45F57;
+  font-weight: bold;
+  color: #FFFFFF;
+  border: 1px solid #333333;
+}
+-->
+</style>
+<title>プロジェクト演習「Model-View-Controller」テスト仕様書</title>
+</head>
+<body>
+<div id="menu">
+<ul>
+  <li><a href="../index.html">ホーム</a></li>
+  <li><a href="../Requirement/index.html">要求仕様書</a></li>
+  <li><a href="../DevelopmentPlan/index.html">開発計画書</a></li>
+  <li><a href="../BasicDesign/index.html">基本設計書</a></li>
+  <li><a href="../DetailDesign/index.html">詳細設計書</a></li>
+  <li><a href="../TestSpecification/index.html" class="current">テスト仕様書</a></li>
+  <li><a href="../TestResult/index.html">テスト結果</a></li>
+  <li><a href="../DevelopmentResult/index.html">開発実績</a></li>
+  <li><a href="../Program/index.html">プログラム</a></li>
+  <li><a href="../Manual/index.html">マニュアル</a></li>
+</ul>
+</div>
+<hr>
+<h2>プロジェクト演習「Model-View-Controller」テスト仕様書</h2>
+<ul>
+  <li><a href="#Example">Example</a>（メインクラス）</li>
+  <li><a href="#Model">Model</a>（モデル）</li>
+  <li><a href="#View">View</a>（ビュー）</li>
+  <li><a href="#Controller">Controller</a>（コントローラ）</li>
+</ul>
+<div class="belt">
+<h3><a name="Example" href="../Program/index.html#Example">Example（メインクラス）</a></h3>
+</div>
+<table summary="table">
+  <tbody>
+    <tr>
+      <td>
+      <table border="1" summary="table">
+        <tbody>
+          <tr>
+            <th class="left-padding" abbr="1">属性（インスタンス変数）</th>
+            <th class="left-padding" abbr="2">束縛</th>
+            <th class="left-padding" abbr="3">分類</th>
+            <th class="left-padding" abbr="4">説明</th>
+            <th class="left-padding" abbr="5">テスト結果</th>
+          </tr>
+          <tr>
+            <td class="left-padding"><code>なし</code></td>
+            <td class="left-padding"><code>なし</code></td>
+            <td class="left-padding"><code>なし</code></td>
+            <td class="left-padding">なし</td>
+            <td class="left-padding">なし</td>
+          </tr>
+        </tbody>
+      </table>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<table summary="table">
+  <tbody>
+    <tr>
+      <td>
+      <table border="1" summary="table">
+        <tbody>
+          <tr>
+            <th class="left-padding" abbr="1">メソッド（操作）</th>
+            <th class="left-padding" abbr="2">応答</th>
+            <th class="left-padding" abbr="3">分類</th>
+            <th class="left-padding" abbr="4">説明</th>
+            <th class="left-padding" abbr="5">テスト結果</th>
+          </tr>
+          <tr>
+            <td class="left-padding"><code><a href="../Program/index.html#Example-main">main(String[] args)</a></code></td>
+            <td class="left-padding"><code>void</code></td>
+            <td class="left-padding"><code>public static</code></td>
+            <td class="left-padding">画面をキャプチャして画像化し、ビューとコントローラの3つのペア（MVC-1, MVC-2, MVC-3のウィンドウたち）から1つのモデルを観測している状態を作り出す。その後、モデルの内容物を先ほどキャプチャした画像にして、自分が変化したと騒いだ瞬間、MVC-1, MVC-2, MVC-3のすべてのウィンドウが更新される。そして、モデルの内容物をnull化して、自分が変化したと騒ぎ、すべてのウィンドウが空に更新される。この過程を何回か繰り返すことで、MVC: Model-View-Controller（Observerデザインパターン）がきちんと動いているかを確かめる例題プログラムである。</td>
+            <td class="left-padding">バグ（2010年7月25日）</td>
+            <td class="left-padding">良好（2010年7月25日）</td>
+          </tr>
+        </tbody>
+      </table>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<div class="belt">
+<h3><a name="Model" href="../Program/index.html#Model">Model（モデル）</a></h3>
+</div>
+<table summary="table">
+  <tbody>
+    <tr>
+      <td>
+      <table border="1" summary="table">
+        <tbody>
+          <tr>
+            <th class="left-padding" abbr="1">属性（インスタンス変数）</th>
+            <th class="left-padding" abbr="2">束縛</th>
+            <th class="left-padding" abbr="3">分類</th>
+            <th class="left-padding" abbr="4">説明</th>
+            <th class="left-padding" abbr="5">テスト結果</th>
+          </tr>
+          <tr>
+            <td class="left-padding"><code>dependents</code></td>
+            <td class="left-padding"><code>ArrayList&lt;View&gt;</code></td>
+            <td class="left-padding"><code>protected</code></td>
+            <td class="left-padding">依存物（Observerデザインパターンの観測者）：Viewのインスタンスたちを束縛する。</td>
+            <td class="left-padding">良好（2010年7月25日）</td>
+          </tr>
+          <tr>
+            <td class="left-padding"><code>picture</code></td>
+            <td class="left-padding"><code>BufferedImage</code></td>
+            <td class="left-padding"><code>private</code></td>
+            <td class="left-padding">内容物として画像を束縛する。</td>
+            <td class="left-padding">良好（2010年7月25日）</td>
+          </tr>
+        </tbody>
+      </table>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<table summary="table">
+  <tbody>
+    <tr>
+      <td>
+      <table border="1" summary="table">
+        <tbody>
+          <tr>
+            <th class="left-padding" abbr="1">メソッド（操作）</th>
+            <th class="left-padding" abbr="2">応答</th>
+            <th class="left-padding" abbr="3">分類</th>
+            <th class="left-padding" abbr="4">説明</th>
+            <th class="left-padding" abbr="5">テスト結果</th>
+          </tr>
+          <tr>
+            <td class="left-padding"><code><a href="../Program/index.html#Model-Model">Model()</a></code></td>
+            <td class="left-padding"><code>instance</code></td>
+            <td class="left-padding"><code>public</code></td>
+            <td class="left-padding">インスタンスを生成して初期化して応答する。</td>
+            <td class="left-padding">良好（2010年7月25日）</td>
+          </tr>
+          <tr>
+            <td class="left-padding"><code><a href="../Program/index.html#Model-addDependent">addDependent(View aView)</a></code></td>
+            <td class="left-padding"><code>void</code></td>
+            <td class="left-padding"><code>public</code></td>
+            <td class="left-padding">指定されたビューを依存物に設定する。</td>
+            <td class="left-padding">良好（2010年7月25日）</td>
+          </tr>
+          <tr>
+            <td class="left-padding"><code><a href="../Program/index.html#Model-changed">changed()</a></code></td>
+            <td class="left-padding"><code>void</code></td>
+            <td class="left-padding"><code>public</code></td>
+            <td class="left-padding">モデルの内部状態が変化していたので、自分の依存物へupdateのメッセージを送信する。</td>
+            <td class="left-padding">良好（2010年7月25日）</td>
+          </tr>
+          <tr>
+            <td class="left-padding"><code><a href="../Program/index.html#Model-initialize">initialize()</a></code></td>
+            <td class="left-padding"><code>void</code></td>
+            <td class="left-padding"><code>private</code></td>
+            <td class="left-padding">初期化する。</td>
+            <td class="left-padding">良好（2010年7月25日）</td>
+          </tr>
+          <tr>
+            <td class="left-padding"><code><a href="../Program/index.html#Model-perform">perform()</a></code></td>
+            <td class="left-padding"><code>void</code></td>
+            <td class="left-padding"><code>public</code></td>
+            <td class="left-padding">何もしない。</td>
+            <td class="left-padding">良好（2010年7月25日）</td>
+          </tr>
+          <tr>
+            <td class="left-padding"><code><a href="../Program/index.html#Model-picture">picture()</a></code></td>
+            <td class="left-padding"><code>BufferedImage</code></td>
+            <td class="left-padding"><code>public</code></td>
+            <td class="left-padding">画像（モデルの内容物）を応答する。</td>
+            <td class="left-padding">良好（2010年7月25日）</td>
+          </tr>
+          <tr>
+            <td class="left-padding"><code><a href="../Program/index.html#Model-picture2">picture(BufferedImage anImage)</a></code></td>
+            <td class="left-padding"><code>void</code></td>
+            <td class="left-padding"><code>public</code></td>
+            <td class="left-padding">画像（モデルの内容物）を設定する。</td>
+            <td class="left-padding">良好（2010年7月25日）</td>
+          </tr>
+          <tr>
+            <td class="left-padding"><code><a href="../Program/index.html#Model-toString">toString() in Model</a></code></td>
+            <td class="left-padding"><code>String</code></td>
+            <td class="left-padding"><code>public</code></td>
+            <td class="left-padding">このインスタンスを文字列にして応答する。</td>
+            <td class="left-padding">良好（2010年7月25日）</td>
+          </tr>
+        </tbody>
+      </table>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<div class="belt">
+<h3><a name="View" href="../Program/index.html#View">View（ビュー）</a></h3>
+</div>
+<table summary="table">
+  <tbody>
+    <tr>
+      <td>
+      <table border="1" summary="table">
+        <tbody>
+          <tr>
+            <th class="left-padding" abbr="1">属性（インスタンス変数）</th>
+            <th class="left-padding" abbr="2">束縛</th>
+            <th class="left-padding" abbr="3">分類</th>
+            <th class="left-padding" abbr="4">説明</th>
+            <th class="left-padding" abbr="5">テスト結果</th>
+          </tr>
+          <tr>
+            <td class="left-padding"><code>model</code></td>
+            <td class="left-padding"><code>Model</code></td>
+            <td class="left-padding"><code>protected</code></td>
+            <td class="left-padding">情報を握っているModelのインスタンスを束縛する。束縛されるModelのインスタンスはpicture()というメッセージに応答できなければならない。</td>
+            <td class="left-padding">良好（2010年7月25日）</td>
+          </tr>
+          <tr>
+            <td class="left-padding"><code>controller</code></td>
+            <td class="left-padding"><code>Controller</code></td>
+            <td class="left-padding"><code>protected</code></td>
+            <td class="left-padding">制御を司るControllerのインスタンスを束縛する。</td>
+            <td class="left-padding">良好（2010年7月25日）</td>
+          </tr>
+          <tr>
+            <td class="left-padding"><code>offset</code></td>
+            <td class="left-padding"><code>Point</code></td>
+            <td class="left-padding"><code>private</code></td>
+            <td class="left-padding">スクロール量としてPointのインスタンスを束縛する。</td>
+            <td class="left-padding">良好（2010年7月25日）</td>
+          </tr>
+        </tbody>
+      </table>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<table summary="table">
+  <tbody>
+    <tr>
+      <td>
+      <table border="1" summary="table">
+        <tbody>
+          <tr>
+            <th class="left-padding" abbr="1">メソッド（操作）</th>
+            <th class="left-padding" abbr="2">応答</th>
+            <th class="left-padding" abbr="3">分類</th>
+            <th class="left-padding" abbr="4">説明</th>
+            <th class="left-padding" abbr="5">テスト結果</th>
+          </tr>
+          <tr>
+            <td class="left-padding"><code><a href="../Program/index.html#View-View">View(Model aModel)</a></code></td>
+            <td class="left-padding"><code>instance</code></td>
+            <td class="left-padding"><code>public</code></td>
+            <td class="left-padding">インスタンスを生成して応答する。指定されたモデルの依存物となり、コントローラを作り、モデルとビューを設定し、スクロール量を(0, 0)に設定する。</td>
+            <td class="left-padding">良好（2010年7月25日）</td>
+          </tr>
+          <tr>
+            <td class="left-padding"><code><a href="../Program/index.html#View-View-View">View(Model aModel, Controller aController)</a></code></td>
+            <td class="left-padding"><code>instance</code></td>
+            <td class="left-padding"><code>public</code></td>
+            <td class="left-padding">インスタンスを生成して応答する。指定されたモデルの依存物となり、指定されたコントローラにモデルとビューを設定し、スクロール量を(0, 0)に設定する。</td>
+            <td class="left-padding">良好（2010年7月25日）</td>
+          </tr>
+          <tr>
+            <td class="left-padding"><code><a href="../Program/index.html#View-paintComponent">paintComponent(Graphics aGraphics)</a></code></td>
+            <td class="left-padding"><code>void</code></td>
+            <td class="left-padding"><code>public</code></td>
+            <td class="left-padding">指定されたグラフィクスに背景色（灰色）でビュー全体を塗り、その後にモデルの内容物を描画する。それはスクロール量（offset）を考慮してモデル画像（picture）をペイン（パネル）内に描画することである。</td>
+            <td class="left-padding">良好（2010年7月25日）</td>
+          </tr>
+          <tr>
+            <td class="left-padding"><code><a href="../Program/index.html#View-scrollAmount">scrollAmount()</a></code></td>
+            <td class="left-padding"><code>Point</code></td>
+            <td class="left-padding"><code>public</code></td>
+            <td class="left-padding">スクロール量（offsetの逆向きの大きさ）を応答する。</td>
+            <td class="left-padding">良好（2010年7月25日）</td>
+          </tr>
+          <tr>
+            <td class="left-padding"><code><a href="../Program/index.html#View-scrollBy">scrollBy(Point aPoint)</a></code></td>
+            <td class="left-padding"><code>void</code></td>
+            <td class="left-padding"><code>public</code></td>
+            <td class="left-padding">スクロール量を指定された座標分だけ相対スクロールする。</td>
+            <td class="left-padding">良好（2010年7月25日）</td>
+          </tr>
+          <tr>
+            <td class="left-padding"><code><a href="../Program/index.html#View-scrollTo">scrollTo(Point aPoint)</a></code></td>
+            <td class="left-padding"><code>void</code></td>
+            <td class="left-padding"><code>public</code></td>
+            <td class="left-padding">スクロール量を指定された座標に設定（絶対スクロール）する。</td>
+            <td class="left-padding">良好（2010年7月25日）</td>
+          </tr>
+          <tr>
+            <td class="left-padding"><code><a href="../Program/index.html#View-toString">toString() in View</a></code></td>
+            <td class="left-padding"><code>String</code></td>
+            <td class="left-padding"><code>public</code></td>
+            <td class="left-padding">このインスタンスを文字列にして応答する。</td>
+            <td class="left-padding">良好（2010年7月25日）</td>
+          </tr>
+          <tr>
+            <td class="left-padding"><code><a href="../Program/index.html#View-update">update()</a></code></td>
+            <td class="left-padding"><code>void</code></td>
+            <td class="left-padding"><code>public</code></td>
+            <td class="left-padding">ビューの全領域を再描画する。</td>
+            <td class="left-padding">良好（2010年7月25日）</td>
+          </tr>
+        </tbody>
+      </table>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<div class="belt">
+<h3><a name="Controller" href="../Program/index.html#Controller">Controller（コントローラ）</a></h3>
+</div>
+<table summary="table">
+  <tbody>
+    <tr>
+      <td>
+      <table border="1" summary="table">
+        <tbody>
+          <tr>
+            <th class="left-padding" abbr="1">属性（インスタンス変数）</th>
+            <th class="left-padding" abbr="2">束縛</th>
+            <th class="left-padding" abbr="3">分類</th>
+            <th class="left-padding" abbr="4">説明</th>
+            <th class="left-padding" abbr="5">テスト結果</th>
+          </tr>
+          <tr>
+            <td class="left-padding"><code>model</code></td>
+            <td class="left-padding"><code>Model</code></td>
+            <td class="left-padding"><code>protected</code></td>
+            <td class="left-padding">情報を握っているModelのインスタンスを束縛する。</td>
+            <td class="left-padding">良好（2010年7月25日）</td>
+          </tr>
+          <tr>
+            <td class="left-padding"><code>view</code></td>
+            <td class="left-padding"><code>View</code></td>
+            <td class="left-padding"><code>protected</code></td>
+            <td class="left-padding">表示を司るViewのインスタンスを束縛する。</td>
+            <td class="left-padding">良好（2010年7月25日）</td>
+          </tr>
+          <tr>
+            <td class="left-padding"><code>previous</code></td>
+            <td class="left-padding"><code>Point</code></td>
+            <td class="left-padding"><code>private</code></td>
+            <td class="left-padding">以前にマウスのボタンが押下された場所をPointのインスタンスとして束縛する。</td>
+            <td class="left-padding">良好（2010年7月25日）</td>
+          </tr>
+          <tr>
+            <td class="left-padding"><code>current</code></td>
+            <td class="left-padding"><code>Point</code></td>
+            <td class="left-padding"><code>private</code></td>
+            <td class="left-padding">現在にマウスのボタンが押下された場所をPointのインスタンスとして束縛する。</td>
+            <td class="left-padding">良好（2010年7月25日）</td>
+          </tr>
+        </tbody>
+      </table>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<table summary="table">
+  <tbody>
+    <tr>
+      <td>
+      <table border="1" summary="table">
+        <tbody>
+          <tr>
+            <th class="left-padding" abbr="1">メソッド（操作）</th>
+            <th class="left-padding" abbr="2">応答</th>
+            <th class="left-padding" abbr="3">分類</th>
+            <th class="left-padding" abbr="4">説明</th>
+            <th class="left-padding" abbr="5">テスト結果</th>
+          </tr>
+          <tr>
+            <td class="left-padding"><code><a href="../Program/index.html#Controller-Controller">Controller()</a></code></td>
+            <td class="left-padding"><code>instance</code></td>
+            <td class="left-padding"><code>public</code></td>
+            <td class="left-padding">インスタンスを生成して応答する。すべてのインスタンス変数（model, view, previous, current）をnull化する。</td>
+            <td class="left-padding">良好（2010年7月25日）</td>
+          </tr>
+          <tr>
+            <td class="left-padding"><code><a href="../Program/index.html#Controller-mouseClicked">mouseClicked(MouseEvent aMouseEvent)</a></code></td>
+            <td class="left-padding"><code>void</code></td>
+            <td class="left-padding"><code>public</code></td>
+            <td class="left-padding">指定されたマウスイベントからマウスカーサの位置を獲得して、モデル座標系でのクリック位置を割り出して標準出力に出力する。</td>
+            <td class="left-padding">良好（2010年7月25日）</td>
+          </tr>
+          <tr>
+            <td class="left-padding"><code><a href="../Program/index.html#Controller-mouseDragged">mouseDragged(MouseEvent aMouseEvent)</a></code></td>
+            <td class="left-padding"><code>void</code></td>
+            <td class="left-padding"><code>public</code></td>
+            <td class="left-padding">マウスカーサの形状を移動の形に変化させ、指定されたマウスイベントからマウスカーサの位置を獲得して、インスタンス変数currentに設定すると共に、以前のマウスカーサの位置からの差分を計算する。そして、その差分だけビューに対してスクロールを依頼し、その後にビューの再描画を依頼する。最後にインスタンス変数previousをインスタンス変数currentに更新する。</td>
+            <td class="left-padding">良好（2010年7月25日）</td>
+          </tr>
+          <tr>
+            <td class="left-padding"><code><a href="../Program/index.html#Controller-mouseEntered">mouseEntered(MouseEvent aMouseEvent)</a></code></td>
+            <td class="left-padding"><code>viod</code></td>
+            <td class="left-padding"><code>public</code></td>
+            <td class="left-padding">何もしない。</td>
+            <td class="left-padding">良好（2010年7月25日）</td>
+          </tr>
+          <tr>
+            <td class="left-padding"><code><a href="../Program/index.html#Controller-mouseExited">mouseExited(MouseEvent aMouseEvent)</a></code></td>
+            <td class="left-padding"><code>void</code></td>
+            <td class="left-padding"><code>public</code></td>
+            <td class="left-padding">何もしない。</td>
+            <td class="left-padding">良好（2010年7月25日）</td>
+          </tr>
+          <tr>
+            <td class="left-padding"><code><a href="../Program/index.html#Controller-mouseMoved">mouseMoved(MouseEvent aMouseEvent)</a></code></td>
+            <td class="left-padding"><code>void</code></td>
+            <td class="left-padding"><code>public</code></td>
+            <td class="left-padding">何もしない。</td>
+            <td class="left-padding">良好（2010年7月25日）</td>
+          </tr>
+          <tr>
+            <td class="left-padding"><code><a href="../Program/index.html#Controller-mousePressed">mousePressed(MouseEvent aMouseEvent)</a></code></td>
+            <td class="left-padding"><code>void</code></td>
+            <td class="left-padding"><code>public</code></td>
+            <td class="left-padding">マウスカーサの形状を十字に変化させ、指定されたマウスイベントからマウスカーサの位置を獲得して、インスタンス変数currentに設定する共にインスタンス変数previousをインスタンス変数currentに更新する。</td>
+            <td class="left-padding">良好（2010年7月25日）</td>
+          </tr>
+          <tr>
+            <td class="left-padding"><code><a href="../Program/index.html#Controller-mouseReleased">mouseReleased(MouseEvent aMouseEvent)</a></code></td>
+            <td class="left-padding"><code>void</code></td>
+            <td class="left-padding"><code>public</code></td>
+            <td class="left-padding">マウスカーサの形状をデフォルトに戻し、指定されたマウスイベントからマウスカーサの位置を獲得して、インスタンス変数currentに設定する共にインスタンス変数previousをインスタンス変数currentに更新する。</td>
+            <td class="left-padding">良好（2010年7月25日）</td>
+          </tr>
+          <tr>
+            <td class="left-padding"><code><a href="../Program/index.html#Controller-mouseWheelMoved">mouseWheelMoved(MouseWheelEvent aMouseWheelEvent)</a></code></td>
+            <td class="left-padding"><code>void</code></td>
+            <td class="left-padding"><code>public</code></td>
+            <td class="left-padding">何もしない。</td>
+            <td class="left-padding">良好（2010年7月25日）</td>
+          </tr>
+          <tr>
+            <td class="left-padding"><code><a href="../Program/index.html#Controller-setModel">setModel(Model aModel)</a></code></td>
+            <td class="left-padding"><code>void</code></td>
+            <td class="left-padding"><code>public</code></td>
+            <td class="left-padding">指定されたモデルをインスタンス変数modelに設定する。</td>
+            <td class="left-padding">良好（2010年7月25日）</td>
+          </tr>
+          <tr>
+            <td class="left-padding"><code><a href="../Program/index.html#Controller-setView">setView(View aView)</a></code></td>
+            <td class="left-padding"><code>void</code></td>
+            <td class="left-padding"><code>public</code></td>
+            <td class="left-padding">指定されたビューをインスタンス変数viewに設定し、ビューのマウスのリスナおよびモーションリスナそしてホイールリスナをこのコントローラにする。</td>
+            <td class="left-padding">良好（2010年7月25日）</td>
+          </tr>
+          <tr>
+            <td class="left-padding"><code><a href="../Program/index.html#Controller-toString">toString() in Controller</a></code></td>
+            <td class="left-padding"><code>String</code></td>
+            <td class="left-padding"><code>public</code></td>
+            <td class="left-padding">このインスタンスを文字列にして応答する。</td>
+            <td class="left-padding">良好（2010年7月25日）</td>
+          </tr>
+        </tbody>
+      </table>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<hr>
+<div class="right-small">Copyright 2009-2013 Project Aoki, Updated: 2013/02/27 (Created: 2009/11/11)</div>
+</body>
+</html>

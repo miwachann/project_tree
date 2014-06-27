@@ -1,0 +1,439 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta name="keywords" content="Aoki,Atsushi,Smalltalk,Smalltalker,Program,Programmer,Object,Oriented,Programming">
+<meta name="description" content="プロジェクト演習のホームページ">
+<meta name="author" content="AOKI Atsushi">
+<link rev="made" href="index.html">
+<link rel="index" href="index.html">
+<style type="text/css">
+<!--
+body {
+  background-color : #ffffff;
+  margin : 20px;
+  padding : 10px;
+  font-family : serif;
+  font-size : 10pt;
+}
+a {
+  text-decoration : underline;
+  color : #000000;
+}
+a:link {
+  background-color : #ffddbb;
+}
+a:visited {
+  background-color : #ccffcc;
+}
+a:hover {
+  background-color : #dddddd;
+}
+a:active {
+  background-color : #dddddd;
+}
+div.belt {
+  background-color : #eeeeee;
+  padding : 0px 4px;
+}
+div.belt-yellow {
+  background-color : #ffffcc;
+  padding : 0px 4px;
+}
+div.belt-blue {
+  background-color : #ddeeff;
+  padding : 0px 4px;
+}
+div.right-small {
+  text-align : right;
+  font-size : 8pt;
+}
+img.border {
+  border-width : 1px;
+  border-color : #000000;
+  vertical-align : middle;
+}
+img.borderless {
+  border-width : 0px;
+  vertical-align : middle;
+}
+p.belt {
+  background-color : #ffeedd;
+  padding : 4px 8px;
+}
+p.belt-blue {
+  background-color : #ddeeff;
+  padding : 4px 8px;
+}
+pre.belt {
+  background-color : #ddeeff;
+  padding : 4px 8px;
+}
+pre.belt-yellow {
+  background-color : #ffffcc;
+  padding : 4px 8px;
+}
+table {
+  border-style : solid;
+  border-width : 0px;
+  border-color : #000000;
+  font-family : serif;
+  font-size : 10pt;
+}
+table.profile {
+  border-style : solid;
+  border-width : 0px;
+  border-color : #000000;
+  font-family : serif;
+  font-size : 10pt;
+  margin-top : 8px;
+  margin-left : 8px;
+  margin-right : 8px;
+  margin-bottom : 8px;
+}
+table.belt {
+  border-style : solid;
+  border-width : 0px;
+  border-color : #000000;
+  background-color : #ffeedd;
+  padding : 0px 0px;
+  width : 100%;
+}
+table.content {
+  border-style : solid;
+  border-width : 0px;
+  border-color : #000000;
+  padding : 2px 4px;
+}
+table.font-fixed {
+  border-style : solid;
+  border-width : 0px;
+  border-color : #000000;
+  padding : 2px 4px;
+  font-family : monospace;
+}
+table.nest {
+  border-style : solid;
+  border-width : 0px;
+  border-color : #000000;
+  padding : 0px 0px;
+}
+td {
+  padding : 0px 0px;
+  vertical-align : middle;
+}
+td.center {
+  text-align : center;
+}
+td.center-half {
+  text-align : center;
+  width : 50%;
+  font-size : 8pt;
+}
+td.center-small {
+  text-align : center;
+  font-size : 8pt;
+  padding : 0px 4px;
+}
+td.center-small-nopadding {
+  text-align : center;
+  font-size : 8pt;
+  padding : 0px 0px;
+}
+td.center-white {
+  text-align : center;
+  background-color : #ffffff;
+}
+td.center-small-white {
+  text-align : center;
+  font-size : 8pt;
+  background-color : #ffffff;
+}
+td.center-border1 {
+  text-align : center;
+  vertical-align : middle;
+  empty-cells : show;
+  border-style : solid;
+  border-width : 1px;
+  border-color : #ffc080;
+  width : 22px;
+  height : 22px;
+}
+td.left-small {
+  text-align : left;
+  font-size : 8pt;
+  padding : 0px 4px;
+}
+td.left-small-white {
+  text-align : left;
+  font-size : 8pt;
+  padding : 0px 4px;
+  background-color : #ffffff;
+}
+td.right-small {
+  text-align : right;
+  font-size : 8pt;
+  padding : 0px 4px;
+}
+td.right-small-white {
+  text-align : right;
+  font-size : 8pt;
+  padding : 0px 4px;
+  background-color : #ffffff;
+}
+th {
+  padding : 0px 0px;
+  vertical-align : middle;
+}
+#menu {
+  margin: 0px 0px 0px 0px;
+  padding: 0px;
+  height: 32px;
+}
+#menu ul {
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+  text-align: center;
+  clear: both;
+}
+#menu li {
+  margin: 0px 5px 0px 0px;
+  padding: 0px;
+  float: left;
+}
+#menu a {
+  display: block;
+  padding: 2px 4px;
+  text-decoration: none;
+  margin: 0px;
+  font-weight: bold;
+  background: #FFFFFF;
+  color: #333333;
+  border: 1px solid #666666;
+}
+#menu a:hover {
+  display: block;
+  padding: 2px 4px;
+  border-bottom: 1px solid #000000;
+  text-decoration: none;
+  background: #FFCC66;
+}
+#menu .current {
+  background-color: #F45F57;
+  font-weight: bold;
+  color: #FFFFFF;
+  border: 1px solid #333333;
+}
+-->
+</style>
+<title>プロジェクト演習「Model-View-Controller」テスト結果報告書</title>
+</head>
+<body>
+<div id="menu">
+<ul>
+  <li><a href="../index.html">ホーム</a></li>
+  <li><a href="../Requirement/index.html">要求仕様書</a></li>
+  <li><a href="../DevelopmentPlan/index.html">開発計画書</a></li>
+  <li><a href="../BasicDesign/index.html">基本設計書</a></li>
+  <li><a href="../DetailDesign/index.html">詳細設計書</a></li>
+  <li><a href="../TestSpecification/index.html">テスト仕様書</a></li>
+  <li><a href="../TestResult/index.html" class="current">テスト結果</a></li>
+  <li><a href="../DevelopmentResult/index.html">開発実績</a></li>
+  <li><a href="../Program/index.html">プログラム</a></li>
+  <li><a href="../Manual/index.html">マニュアル</a></li>
+</ul>
+</div>
+<hr>
+<h2>プロジェクト演習「Model-View-Controller」テスト結果報告書</h2>
+<p>メソッドおよびクラスの詳細なテスト結果は<a href="../TestSpecification/index.html">テスト仕様書</a>や<a href="JavaDoc/index.html">JavaDoc</a>の中に記載している。<br>
+以下に動作試験に使用したコンピュータとその動作状況を一覧として記す。</p>
+<div class="belt">
+<h3>ThinkPad T61p</h3>
+</div>
+<h4>【正常動作：2010年7月25日】目標と性能を充足</h4>
+<h4>OS: Windows 7 Ultimate</h4>
+<pre>VisualWorks 7.6 Non-Commercial (Cincom Smalltalk)</pre>
+<table class="content" summary="table">
+  <tbody>
+    <tr>
+      <td class="top"><a href="pdfs/Office-ThinkPadT61p.pdf"><img class="borderless" src="images/Office-ThinkPadT61p.jpg" width="100" height="100" alt="Office-ThinkPadT61p"></a></td>
+      <td class="left-small">
+      <ul>
+        <li>Processor: Intel Core 2 Duo T9300 2.5GHz
+        <li>Memory: 4GB
+        <li>nVidia Quadro FX 570M (256MB)
+        <li>Internal Hard Disk Drive: 250GB Serial ATA @ 5,400rpm
+        <li>Internal Super Multi Drive
+        <li>Ethernet 10BASE-T/100BASE-TX/1000BASE-T
+        <li>Wireless LAN &amp; Bluetooth
+      </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<div class="belt">
+<h3>ThinkPad X61 Tablet</h3>
+</div>
+<h4>【正常動作：2010年7月25日】目標と性能を充足</h4>
+<h4>OS: Windows 7 Ultimate</h4>
+<pre>VisualWorks 7.6 Non-Commercial (Cincom Smalltalk)</pre>
+<table class="content" summary="table">
+  <tbody>
+    <tr>
+      <td class="top"><a href="pdfs/Home-ThinkPadX61Tablet.pdf"><img class="borderless" src="images/Home-ThinkPadX61Tablet.jpg" width="100" height="100" alt="Home-ThinkPadX61Tablet"></a></td>
+      <td class="left-small">
+      <ul>
+        <li>Processor: Intel Core 2 Duo L7500 1.6GHz
+        <li>Memory: 2GB
+        <li>Display: 12.1 inch Super Wide Viewing Angle FFS SXGA+ TFT
+        <li>Internal Hard Disk Drive: 160GB Serial ATA @ 5400rpm
+        <li>Ethernet 10BASE-T/100BASE-TX/1000BASE-T
+        <li>Wireless LAN
+      </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<div class="belt">
+<h3>Mac Pro</h3>
+</div>
+<h4>【正常動作：2010年7月25日】目標と性能を充足</h4>
+<h4>OS: Mac OS X Server Snow Leopard (version 10.6.2)</h4>
+<pre>$ java -version
+java version "1.6.0_15"
+Java(TM) SE Runtime Environment (build 1.6.0_15-b03-219)
+Java HotSpot(TM) 64-Bit Server VM (build 14.1-b02-90, mixed mode)</pre>
+<table class="content" summary="table">
+  <tbody>
+    <tr>
+      <td class="top"><a href="pdfs/Office-MacPro.pdf"><img class="borderless" src="images/Office-MacPro.jpg" width="100" height="100" alt="Office-MacPro"></a></td>
+      <td class="left-small">
+      <ul>
+        <li>Processor: Intel Quad-Core Xeon 2.93GHz
+        <li>Memory: 16GB
+        <li>Apple Cinema HD Display (30&quot; flat panel model 2,560x1,600)
+        <li>ATI Radeon HD 4870 (512MB)
+        <li>Mac Pro RAID Card
+        <li>Internal Hard Disk Drive: 4TB (4 × 1TB Serial ATA @ 7200rpm)
+        <li>Internal Super Drive 2 × x18 (DVD+-R DL/DVD+-RW/CD-RW)
+        <li>Ethernet 10BASE-T/100BASE-TX/1000BASE-T
+        <li>Wireless LAN AirMac Extreme &amp; Bluetooth
+      </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<div class="belt">
+<h3>iMac 24&quot;</h3>
+</div>
+<h4>【正常動作：2010年7月25日】目標と性能を充足</h4>
+<h4>OS: Mac OS X Snow Leopard (version 10.6.2)</h4>
+<pre>$ java -version
+java version "1.6.0_15"
+Java(TM) SE Runtime Environment (build 1.6.0_15-b03-219)
+Java HotSpot(TM) 64-Bit Server VM (build 14.1-b02-90, mixed mode)</pre>
+<table class="content" summary="table">
+  <tbody>
+    <tr>
+      <td class="top"><a href="pdfs/Office-iMac24.pdf"><img class="borderless" src="images/Office-iMac24.jpg" width="100" height="100" alt="Office-iMac24"></a></td>
+      <td class="left-small">
+      <ul>
+        <li>Processor: Intel Core 2 Duo 2.93GHz
+        <li>Memory: 4GB
+        <li>NVIDIA GeForce GT 120（256MB)
+        <li>Internal Hard Disk Drive: 640GB Serial ATA @ 7200rpm
+        <li>Internal Super Drive x8 (DVD+-R DL/DVD+-RW/CD-RW)
+        <li>Ethernet 10BASE-T/100BASE-TX/1000BASE-T
+        <li>Wireless LAN AirMac Extreme &amp; Bluetooth
+      </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<div class="belt">
+<h3>MacBook Air</h3>
+</div>
+<h4>【正常動作：2010年7月25日】目標と性能を充足</h4>
+<h4>OS: Mac OS X Snow Leopard (version 10.6.2)</h4>
+<pre>$ java -version
+java version "1.6.0_15"
+Java(TM) SE Runtime Environment (build 1.6.0_15-b03-219)
+Java HotSpot(TM) 64-Bit Server VM (build 14.1-b02-90, mixed mode)</pre>
+<table class="content" summary="table">
+  <tbody>
+    <tr>
+      <td class="top"><a href="pdfs/Office-MacBookAir.pdf"><img class="borderless" src="images/Office-MacBookAir.jpg" width="100" height="100" alt="Office-MacBookAir"></a></td>
+      <td class="left-small">
+      <ul>
+        <li>Processor: Intel Core 2 Duo 1.86GHz
+        <li>Memory: 2GB
+        <li>NVIDIA GeForce 9400M (256MB)
+        <li>Internal Solid State Drive: 128GB (SSD)
+        <li>Wireless LAN AirMac Extreme &amp; Bluetooth
+        <li>USB MacBook Air SuperDrive
+      </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<div class="belt">
+<h3>MacBook Pro 15"</h3>
+</div>
+<h4>【正常動作：2010年7月25日】目標と性能を充足</h4>
+<h4>OS: Mac OS X Snow Leopard (version 10.6.2)</h4>
+<pre>$ java -version
+java version "1.6.0_15"
+Java(TM) SE Runtime Environment (build 1.6.0_15-b03-219)
+Java HotSpot(TM) 64-Bit Server VM (build 14.1-b02-90, mixed mode)</pre>
+<table class="content" summary="table">
+  <tbody>
+    <tr>
+      <td class="top"><a href="pdfs/Office-MacBookPro.pdf"><img class="borderless" src="images/Office-MacBookPro.jpg" width="100" height="100" alt="Office-MacBookPro"></a></td>
+      <td class="left-small">
+      <ul>
+        <li>Processor: Intel Core 2 Duo 2.93GHz
+        <li>Memory: 4GB
+        <li>NVIDIA GeForce 9600M GT (512MB)
+        <li>Internal Solid State Drive: 256GB (SSD)
+        <li>Internal Super Drive x8 (DVD+-R DL/DVD+-RW/CD-RW)
+        <li>Ethernet 10BASE-T/100BASE-TX/1000BASE-T
+        <li>Wireless LAN AirMac Extreme &amp; Bluetooth
+      </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<div class="belt">
+<h3>MacBook 13.3&quot; black</h3>
+</div>
+<h4>【正常動作：2010年7月25日】目標と性能を充足</h4>
+<h4>OS: Mac OS X Snow Leopard (version 10.6.2)</h4>
+<pre>$ java -version
+java version "1.6.0_15"
+Java(TM) SE Runtime Environment (build 1.6.0_15-b03-219)
+Java HotSpot(TM) 64-Bit Server VM (build 14.1-b02-90, mixed mode)</pre>
+<table class="content" summary="table">
+  <tbody>
+    <tr>
+      <td class="top"><a href="pdfs/Office-MacBook-black.pdf"><img class="borderless" src="images/Office-MacBook-black.jpg" width="100" height="100" alt="Office-MacBook-black"></a></td>
+      <td class="left-small">
+      <ul>
+        <li>Processor: Intel Core 2 Duo 2.4GHz
+        <li>Memory: 2GB
+        <li>Intel GMA X3100 (144MB)
+        <li>Internal Hard Disk Drive: 250GB Serial ATA @ 5400rpm
+        <li>Internal Super Drive x8 (DVD+-R DL/DVD+-RW/CD-RW)
+        <li>Ethernet 10BASE-T/100BASE-TX/1000BASE-T
+        <li>Wireless LAN AirMac Extreme &amp; Bluetooth
+      </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<hr>
+<div class="right-small">Copyright 2009-2013 Project Aoki, Updated: 2013/02/27 (Created: 2009/11/11)</div>
+</body>
+</html>

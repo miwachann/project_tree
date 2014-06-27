@@ -1,0 +1,998 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta name="keywords" content="Aoki,Atsushi,Smalltalk,Smalltalker,Program,Programmer,Object,Oriented,Programming">
+<meta name="description" content="プロジェクト演習のホームページ">
+<meta name="author" content="AOKI Atsushi">
+<link rev="made" href="index.html">
+<link rel="index" href="index.html">
+<style type="text/css">
+<!--
+body {
+  background-color : #ffffff;
+  margin : 20px;
+  padding : 10px;
+  font-family : serif;
+  font-size : 10pt;
+}
+a {
+  text-decoration : underline;
+  color : #000000;
+}
+a:link {
+  background-color : #ffddbb;
+}
+a:visited {
+  background-color : #ccffcc;
+}
+a:hover {
+  background-color : #dddddd;
+}
+a:active {
+  background-color : #dddddd;
+}
+div.belt {
+  background-color : #eeeeee;
+  padding : 0px 4px;
+}
+div.belt-yellow {
+  background-color : #ffffcc;
+  padding : 0px 4px;
+}
+div.belt-blue {
+  background-color : #ddeeff;
+  padding : 0px 4px;
+}
+div.right-small {
+  text-align : right;
+  font-size : 8pt;
+}
+img.border {
+  border-width : 1px;
+  border-color : #000000;
+  vertical-align : middle;
+}
+img.borderless {
+  border-width : 0px;
+  vertical-align : middle;
+}
+p.belt {
+  background-color : #ffeedd;
+  padding : 4px 8px;
+}
+p.belt-blue {
+  background-color : #ddeeff;
+  padding : 4px 8px;
+}
+pre.belt {
+  background-color : #ddeeff;
+  padding : 4px 8px;
+}
+pre.belt-yellow {
+  background-color : #ffffcc;
+  padding : 4px 8px;
+}
+table {
+  border-style : solid;
+  border-width : 0px;
+  border-color : #000000;
+  font-family : serif;
+  font-size : 10pt;
+}
+table.profile {
+  border-style : solid;
+  border-width : 0px;
+  border-color : #000000;
+  font-family : serif;
+  font-size : 10pt;
+  margin-top : 8px;
+  margin-left : 8px;
+  margin-right : 8px;
+  margin-bottom : 8px;
+}
+table.belt {
+  border-style : solid;
+  border-width : 0px;
+  border-color : #000000;
+  background-color : #ffeedd;
+  padding : 0px 0px;
+  width : 100%;
+}
+table.content {
+  border-style : solid;
+  border-width : 0px;
+  border-color : #000000;
+  padding : 2px 4px;
+}
+table.font-fixed {
+  border-style : solid;
+  border-width : 0px;
+  border-color : #000000;
+  padding : 2px 4px;
+  font-family : monospace;
+}
+table.nest {
+  border-style : solid;
+  border-width : 0px;
+  border-color : #000000;
+  padding : 0px 0px;
+}
+td {
+  padding : 0px 0px;
+  vertical-align : middle;
+}
+td.center {
+  text-align : center;
+}
+td.center-half {
+  text-align : center;
+  width : 50%;
+  font-size : 8pt;
+}
+td.center-small {
+  text-align : center;
+  font-size : 8pt;
+  padding : 0px 4px;
+}
+td.center-small-nopadding {
+  text-align : center;
+  font-size : 8pt;
+  padding : 0px 0px;
+}
+td.center-white {
+  text-align : center;
+  background-color : #ffffff;
+}
+td.center-small-white {
+  text-align : center;
+  font-size : 8pt;
+  background-color : #ffffff;
+}
+td.center-border1 {
+  text-align : center;
+  vertical-align : middle;
+  empty-cells : show;
+  border-style : solid;
+  border-width : 1px;
+  border-color : #ffc080;
+  width : 22px;
+  height : 22px;
+}
+td.left-small {
+  text-align : left;
+  font-size : 8pt;
+  padding : 0px 4px;
+}
+td.left-small-white {
+  text-align : left;
+  font-size : 8pt;
+  padding : 0px 4px;
+  background-color : #ffffff;
+}
+td.right-small {
+  text-align : right;
+  font-size : 8pt;
+  padding : 0px 4px;
+}
+td.right-small-white {
+  text-align : right;
+  font-size : 8pt;
+  padding : 0px 4px;
+  background-color : #ffffff;
+}
+th {
+  padding : 0px 0px;
+  vertical-align : middle;
+}
+#menu {
+  margin: 0px 0px 0px 0px;
+  padding: 0px;
+  height: 32px;
+}
+#menu ul {
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+  text-align: center;
+  clear: both;
+}
+#menu li {
+  margin: 0px 5px 0px 0px;
+  padding: 0px;
+  float: left;
+}
+#menu a {
+  display: block;
+  padding: 2px 4px;
+  text-decoration: none;
+  margin: 0px;
+  font-weight: bold;
+  background: #FFFFFF;
+  color: #333333;
+  border: 1px solid #666666;
+}
+#menu a:hover {
+  display: block;
+  padding: 2px 4px;
+  border-bottom: 1px solid #000000;
+  text-decoration: none;
+  background: #FFCC66;
+}
+#menu .current {
+  background-color: #F45F57;
+  font-weight: bold;
+  color: #FFFFFF;
+  border: 1px solid #333333;
+}
+-->
+</style>
+<title>プロジェクト演習「Model-View-Controller」プログラム</title>
+</head>
+<body>
+<div id="menu">
+<ul>
+  <li><a href="../index.html">ホーム</a></li>
+  <li><a href="../Requirement/index.html">要求仕様書</a></li>
+  <li><a href="../DevelopmentPlan/index.html">開発計画書</a></li>
+  <li><a href="../BasicDesign/index.html">基本設計書</a></li>
+  <li><a href="../DetailDesign/index.html">詳細設計書</a></li>
+  <li><a href="../TestSpecification/index.html">テスト仕様書</a></li>
+  <li><a href="../TestResult/index.html">テスト結果</a></li>
+  <li><a href="../DevelopmentResult/index.html">開発実績</a></li>
+  <li><a href="../Program/index.html" class="current">プログラム</a></li>
+  <li><a href="../Manual/index.html">マニュアル</a></li>
+</ul>
+</div>
+<hr>
+<h2>プロジェクト演習「Model-View-Controller」プログラム</h2>
+<ul>
+  <li><a href="#Example">Example</a>（メインクラス）</li>
+  <li><a href="#Model">Model</a>（モデル）</li>
+  <li><a href="#View">View</a>（ビュー）</li>
+  <li><a href="#Controller">Controller</a>（コントローラ）</li>
+</ul>
+<ul>
+  <li><a href="#mvc.mf">mvc.mf</a>（マニフェストファイル）</li>
+  <li><a href="#Makefile">Makefile</a>（メイクファイル）</li>
+  <li><a href="#build.xml">build.xml</a>（ビルドファイル）</li>
+</ul>
+<ul>
+  <li><a href="#Makefile.old">Makefile.old</a>（古いメイクファイル）</li>
+</ul>
+<div class="belt">
+<h3><a name="Example" href="../TestSpecification/index.html#Example">Example（メインクラス）</a></h3>
+</div>
+<pre>package mvc;
+
+import java.awt.Dimension;
+import java.awt.Rectangle;
+import java.awt.Robot;
+import java.awt.Toolkit;
+import java.awt.image.BufferedImage;
+import javax.swing.JFrame;
+
+/**
+ * 例題プログラム。
+ */
+public class Example extends Object
+{
+        /**
+         * 画面をキャプチャして画像化し、ビューとコントローラの3つのペア（MVC-1, MVC-2, MVC-3のウィンドウたち）から1つのモデルを観測している状態を作り出す。
+         * その後、モデルの内容物を先ほどキャプチャした画像にして、自分が変化したと騒いだ瞬間、MVC-1, MVC-2, MVC-3のすべてのウィンドウが更新される。
+         * そして、モデルの内容物をnull化して、自分が変化したと騒ぎ、すべてのウィンドウが空に更新される。
+         * この過程を何回か繰り返すことで、MVC: Model-View-Controller（Observerデザインパターン）がきちんと動いているかを確かめる例題プログラムである。
+         * バグ（2010年7月25日）
+         * 良好（2010年7月25日）
+         */
+        public static void <a name="Example-main">main(String[] args)</a>
+        {
+                Dimension aDimension = Toolkit.getDefaultToolkit().getScreenSize();
+                Robot aRobot = null;
+                try
+                {
+                        aRobot = new Robot();
+                }
+                catch (Exception anException)
+                {
+                        System.err.println(anException);
+                        throw new RuntimeException(anException.toString());
+                }
+                BufferedImage anImage = aRobot.createScreenCapture(new Rectangle(aDimension));
+                
+                Model aModel = new Model();
+                
+                for (int index = 0; index &lt; 3; index++)
+                {
+                        View aView;
+                        JFrame aWindow;
+
+                        aView = new View(aModel);
+                        aWindow = new JFrame(&quot;MVC-&quot; + Integer.toString(index + 1));
+                        aWindow.getContentPane().add(aView);
+                        aWindow.setMinimumSize(new Dimension(400, 300));
+                        aWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                        aWindow.setSize(800, 600);
+                        aWindow.setLocation((200 + (index * 80)), (100 + (index * 60)));
+                        aWindow.setVisible(true);
+                }
+                
+                for (int index = 0; index &lt; 11; index++)
+                {
+                        try
+                        {
+                                Thread.sleep(1000);
+                        }
+                        catch (InterruptedException anException)
+                        {
+                                System.err.println(anException);
+                                throw new RuntimeException(anException.toString());
+                        }
+                        if (index % 2 == 0)
+                        {
+                                aModel.picture(anImage);
+                        }
+                        else
+                        {
+                                aModel.picture(null);
+                        }
+                        aModel.changed();
+                }
+                
+                return;
+        }
+}</pre>
+<div class="belt">
+<h3><a name="Model" href="../TestSpecification/index.html#Model">Model（モデル）</a></h3>
+</div>
+<pre>package mvc;
+
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Iterator;
+
+/**
+ * モデル。
+ */
+public class Model extends Object
+{
+        /**
+         * 依存物（Observerデザインパターンの観測者）：Viewのインスタンスたちを束縛する。
+         * 良好（2010年7月25日）
+         */
+        protected ArrayList&lt;View&gt; dependents;
+
+        /**
+         * 内容物として画像を束縛する。
+         * 良好（2010年7月25日）
+         */
+        private BufferedImage picture;
+
+        /**
+         * インスタンスを生成して初期化して応答する。
+         * 良好（2010年7月25日）
+         */
+        public <a name="Model-Model">Model()</a>
+        {
+                super();
+                this.initialize();
+        }
+
+        /**
+         * 指定されたビューを依存物に設定する。
+         * 良好（2010年7月25日）
+         */
+        public void <a name="Model-addDependent">addDependent(View aView)</a>
+        {
+                dependents.add(aView);
+                return;
+        }
+
+        /**
+         * モデルの内部状態が変化していたので、自分の依存物へupdateのメッセージを送信する。
+         * 良好（2010年7月25日）
+         */
+        public void <a name="Model-changed">changed()</a>
+        {
+                Iterator anIterator = dependents.iterator();
+                while (anIterator.hasNext())
+                {
+                        View aView = (View)anIterator.next();
+                        aView.update();
+                }
+                return;
+        }
+
+        /**
+         * 初期化する。
+         * 良好（2010年7月25日）
+         */
+        private void <a name="Model-initialize">initialize()</a>
+        {
+                dependents = new ArrayList&lt;View&gt;();
+                picture = null;
+                return;
+        }
+
+        /**
+         * 何もしない。
+         * 良好（2010年7月25日）
+         */
+        public void <a name="Model-perform">perform()</a>
+        {
+                return;
+        }
+
+        /**
+         * 画像（モデルの内容物）を応答する。
+         * 良好（2010年7月25日）
+         */
+        protected BufferedImage <a name="Model-picture">picture()</a>
+        {
+                return picture;
+        }
+
+        /**
+         * 画像（モデルの内容物）を設定する。
+         * 良好（2010年7月25日）
+         */
+        public void <a name="Model-picture2">picture(BufferedImage anImage)</a>
+        {
+                picture = anImage;
+                return;
+        }
+
+        /**
+         * このインスタンスを文字列にして応答する。
+         * 良好（2010年7月25日）
+         */
+        public String <a name="Model-toString">toString()</a>
+        {
+                StringBuffer aBuffer = new StringBuffer();
+                Class aClass = this.getClass();
+                aBuffer.append(aClass.getName());
+                aBuffer.append(&quot;[picture=&quot;);
+                aBuffer.append(picture);
+                aBuffer.append(&quot;]&quot;);
+                return aBuffer.toString();
+        }
+}
+</pre>
+<div class="belt">
+<h3><a name="View" href="../TestSpecification/index.html#View">View（ビュー）</a></h3>
+</div>
+<pre>package mvc;
+
+import java.awt.Point;
+import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+import javax.swing.JPanel;
+import java.awt.Color;
+
+/**
+ * ビュー。
+ */
+public class View extends JPanel
+{
+        /**
+         * 情報を握っているModelのインスタンスを束縛する。
+         * 束縛されるModelのインスタンスはpicture()というメッセージに応答できなければならない。
+         * 良好（2010年7月25日）
+         */
+        protected Model model;
+
+        /**
+         * 制御を司るControllerのインスタンスを束縛する。
+         * 良好（2010年7月25日）
+         */
+        protected Controller controller;
+        
+        /**
+         * スクロール量としてPointのインスタンスを束縛する。
+         * 良好（2010年7月25日）
+         */
+        private Point offset;
+
+        /**
+         * インスタンスを生成して応答する。
+         * 指定されたモデルの依存物となり、コントローラを作り、モデルとビューを設定し、スクロール量を(0, 0)に設定する。
+         * 良好（2010年7月25日）
+         */
+        public <a name="View-View">View(Model aModel)</a>
+        {
+                super();
+                model = aModel;
+                model.addDependent(this);
+                controller = new Controller();
+                controller.setModel(model);
+                controller.setView(this);
+                offset = new Point(0, 0);
+        }
+
+        /**
+         * インスタンスを生成して応答する。
+         * 指定されたモデルの依存物となり、指定されたコントローラにモデルとビューを設定し、スクロール量を(0, 0)に設定する。
+         * 良好（2010年7月25日）
+         */
+        public <a name="View-View-View">View(Model aModel, Controller aController)</a>
+        {
+                super();
+                model = aModel;
+                model.addDependent(this);
+                controller = aController;
+                controller.setModel(model);
+                controller.setView(this);
+                offset = new Point(0, 0);
+        }
+
+        /**
+         * 指定されたグラフィクスに背景色（灰色）でビュー全体を塗り、その後にモデルの内容物を描画する。
+         * それはスクロール量（offset）を考慮してモデル画像（picture）をペイン（パネル）内に描画することである。
+         * 良好（2010年7月25日）
+         */
+        public void <a name="View-paintComponent">paintComponent(Graphics aGraphics)</a>
+        {
+                int width = this.getWidth();
+                int height = this.getHeight();
+                aGraphics.setColor(Color.gray);
+                aGraphics.fillRect(0, 0, width, height);
+                if (model == null) { return; }
+                BufferedImage picture = model.picture();
+                if (picture == null) { return; }
+                aGraphics.drawImage(picture, offset.x, offset.y, null);
+                return;
+        }
+
+        /**
+         * スクロール量（offsetの逆向きの大きさ）を応答する。
+         * 良好（2010年7月25日）
+         */
+        public Point <a name="View-scrollAmount">scrollAmount()</a>
+        {
+                int x = 0 - offset.x;
+                int y = 0 - offset.y;
+                return (new Point(x, y));
+        }
+
+        /**
+         * スクロール量を指定された座標分だけ相対スクロールする。
+         * 良好（2010年7月25日）
+         */
+        public void <a name="View-scrollBy">scrollBy(Point aPoint)</a>
+        {
+                int x = offset.x + aPoint.x;
+                int y = offset.y + aPoint.y;
+                this.scrollTo(new Point(x, y));
+                return;
+        }
+
+        /**
+         * スクロール量を指定された座標に設定（絶対スクロール）する。
+         * 良好（2010年7月25日）
+         */
+        public void <a name="View-scrollTo">scrollTo(Point aPoint)</a>
+        {
+                offset = aPoint;
+                return;
+        }
+
+        /**
+         * このインスタンスを文字列にして応答する。
+         * 良好（2010年7月25日）
+         */
+        public String <a name="View-toString">toString()</a>
+        {
+                StringBuffer aBuffer = new StringBuffer();
+                Class aClass = this.getClass();
+                aBuffer.append(aClass.getName());
+                aBuffer.append(&quot;[model=&quot;);
+                aBuffer.append(model);
+                aBuffer.append(&quot;,offset=&quot;);
+                aBuffer.append(offset);
+                aBuffer.append(&quot;]&quot;);
+                return aBuffer.toString();
+        }
+
+        /**
+         * ビューの全領域を再描画する。
+         * 良好（2010年7月25日）
+         */
+        public void <a name="View-update">update()</a>
+        {
+                this.repaint(0, 0, this.getWidth(), this.getHeight());
+                return;
+        }
+}
+</pre>
+<div class="belt">
+<h3><a name="Controller" href="../TestSpecification/index.html#Controller">Controller（コントローラ）</a></h3>
+</div>
+<pre>package mvc;
+
+import java.awt.Component;
+import java.awt.Cursor;
+import java.awt.Point;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseWheelEvent;
+import java.awt.event.MouseWheelListener;
+import javax.swing.event.MouseInputAdapter;
+
+/**
+ * コントローラ。
+ */
+public class Controller extends MouseInputAdapter implements MouseWheelListener
+{
+        /**
+         * 情報を握っているModelのインスタンスを束縛する。
+         * 良好（2010年7月25日）
+         */
+        protected Model model;
+        
+        /**
+         * 表示を司るViewのインスタンスを束縛する。
+         * 良好（2010年7月25日）
+         */
+        protected View view;
+        
+        /**
+         * 以前にマウスのボタンが押下された場所をPointのインスタンスとして束縛する。
+         * 良好（2010年7月25日）
+         */
+        private Point previous;
+        
+        /**
+         * 現在にマウスのボタンが押下された場所をPointのインスタンスとして束縛する。
+         * 良好（2010年7月25日）
+         */
+        private Point current;
+
+        /**
+         * インスタンスを生成して応答する。
+         * すべてのインスタンス変数（model, view, previous, current）をnull化する。
+         * 良好（2010年7月25日）
+         */
+        public <a name="Controller-Controller">Controller()</a>
+        {
+                super();
+                model = null;
+                view = null;
+                previous = null;
+                current = null;
+        }
+
+        /**
+         * 指定されたマウスイベントからマウスカーサの位置を獲得して、モデル座標系でのクリック位置を割り出して標準出力に出力する。
+         * 良好（2010年7月25日）
+         */
+        public void <a name="Controller-mouseClicked">mouseClicked(MouseEvent aMouseEvent)</a>
+        {
+                Point aPoint = aMouseEvent.getPoint();
+                aPoint.translate(view.scrollAmount().x, view.scrollAmount().y);
+                System.out.println(aPoint);
+                return;
+        }
+
+        /**
+         * マウスカーサの形状を移動の形に変化させ、指定されたマウスイベントからマウスカーサの位置を獲得して、
+         * インスタンス変数currentに設定すると共に、以前のマウスカーサの位置からの差分を計算する。
+         * そして、その差分だけビューに対してスクロールを依頼し、その後にビューの再描画を依頼する。
+         * 最後にインスタンス変数previousをインスタンス変数currentに更新する。
+         * 良好（2010年7月25日）
+         */
+        public void <a name="Controller-mouseDragged">mouseDragged(MouseEvent aMouseEvent)</a>
+        {
+                Cursor aCursor = Cursor.getPredefinedCursor(Cursor.MOVE_CURSOR);
+                Component aComponent = (Component)aMouseEvent.getSource();
+                aComponent.setCursor(aCursor);
+                current = aMouseEvent.getPoint();
+                int x = current.x - previous.x;
+                int y = current.y - previous.y;
+                Point point = new Point(x, y);
+                view.scrollBy(point);
+                view.repaint();
+                previous = current;
+                return;
+        }
+
+        /**
+         * 何もしない。
+         * 良好（2010年7月25日）
+         */
+        public void <a name="Controller-mouseEntered">mouseEntered(MouseEvent aMouseEvent)</a>
+        {
+                return;
+        }
+
+        /**
+         * 何もしない。
+         * 良好（2010年7月25日）
+         */
+        public void <a name="Controller-mouseExited">mouseExited(MouseEvent aMouseEvent)</a>
+        {
+                return;
+        }
+
+        /**
+         * 何もしない。
+         * 良好（2010年7月25日）
+         */
+        public void <a name="Controller-mouseMoved">mouseMoved(MouseEvent aMouseEvent)</a>
+        {
+                return;
+        }
+
+        /**
+         * マウスカーサの形状を十字に変化させ、指定されたマウスイベントからマウスカーサの位置を獲得して、
+         * インスタンス変数currentに設定する共にインスタンス変数previousをインスタンス変数currentに更新する。
+         * 良好（2010年7月25日）
+         */
+        public void <a name="Controller-mousePressed">mousePressed(MouseEvent aMouseEvent)</a>
+        {
+                Cursor aCursor = Cursor.getPredefinedCursor(Cursor.CROSSHAIR_CURSOR);
+                Component aComponent = (Component)aMouseEvent.getSource();
+                aComponent.setCursor(aCursor);
+                current = aMouseEvent.getPoint();
+                previous = current;
+                return;
+        }
+
+        /**
+         * マウスカーサの形状をデフォルトに戻し、指定されたマウスイベントからマウスカーサの位置を獲得して、
+         * インスタンス変数currentに設定する共にインスタンス変数previousをインスタンス変数currentに更新する。
+         * 良好（2010年7月25日）
+         */
+        public void <a name="Controller-mouseReleased">mouseReleased(MouseEvent aMouseEvent)</a>
+        {
+                Cursor aCursor = Cursor.getDefaultCursor();
+                Component aComponent = (Component)aMouseEvent.getSource();
+                aComponent.setCursor(aCursor);
+                current = aMouseEvent.getPoint();
+                previous = current;
+                return;
+        }
+
+        /**
+         * 何もしない。
+         * 良好（2010年7月25日）
+         */
+        public void <a name="Controller-mouseWheelMoved">mouseWheelMoved(MouseWheelEvent aMouseWheelEvent)</a>
+        {
+                return;
+        }
+
+        /**
+         * 指定されたモデルをインスタンス変数modelに設定する。
+         * 良好（2010年7月25日）
+         */
+        public void <a name="Controller-setModel">setModel(Model aModel)</a>
+        {
+                model = aModel;
+                return;
+        }
+
+        /**
+         * 指定されたビューをインスタンス変数viewに設定し、ビューのマウスのリスナおよびモーションリスナそしてホイールリスナをこのコントローラにする。
+         * 良好（2010年7月25日）
+         */
+        public void <a name="Controller-setView">setView(View aView)</a>
+        {
+                view = aView;
+                view.addMouseListener(this);
+                view.addMouseMotionListener(this);
+                view.addMouseWheelListener(this);
+                return;
+        }
+
+        /**
+         * このインスタンスを文字列にして応答する。
+         * 良好（2010年7月25日）
+         */
+        public String <a name="Controller-toString">toString()</a>
+        {
+                StringBuffer aBuffer = new StringBuffer();
+                Class aClass = this.getClass();
+                aBuffer.append(aClass.getName());
+                aBuffer.append(&quot;[model=&quot;);
+                aBuffer.append(model);
+                aBuffer.append(&quot;,view=&quot;);
+                aBuffer.append(view);
+                aBuffer.append(&quot;]&quot;);
+                return aBuffer.toString();
+        }
+}
+</pre>
+<div class="belt">
+<h3><a name="mvc.mf">mvc.mf</a>（マニフェストファイル）</h3>
+</div>
+<pre>Manifest-Version: 1.0
+Main-Class: mvc.Example</pre>
+<div class="belt">
+<h3><a name="Makefile">Makefile</a>（メイクファイル）</h3>
+</div>
+<pre>ANT     = env LC_ALL=en ant
+
+all:
+        $(ANT) all
+
+clean:
+        $(ANT) clean
+
+test:
+        $(ANT) test
+
+install:
+        $(ANT) install
+
+doc:
+        $(ANT) doc
+
+zip:
+        $(ANT) zip
+</pre>
+<div class="belt">
+<h3><a name="build.xml">build.xml</a>（ビルドファイル）</h3>
+</div>
+<pre>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+
+&lt;project name=&quot;MVC&quot; default=&quot;all&quot; basedir=&quot;.&quot;&gt;
+
+  &lt;property name=&quot;package&quot; value=&quot;mvc&quot; /&gt;
+  &lt;property name=&quot;packagenames&quot; value=&quot;${package}&quot; /&gt;
+  &lt;property name=&quot;destdir&quot; value=&quot;./Classes&quot; /&gt;
+  &lt;property name=&quot;docdir&quot; value=&quot;./JavaDoc&quot; /&gt;
+  &lt;property name=&quot;instdir&quot; value=&quot;./${ant.project.name}.app/Contents/Resources/Java&quot; /&gt;
+  &lt;property name=&quot;copyright&quot; value=&quot;Copyright 2008-2011 AOKI Atsushi. All Right Reserved.&quot; /&gt;
+  &lt;property name=&quot;zipname&quot; value=&quot;${ant.project.name}&quot; /&gt;
+
+  &lt;tstamp&gt;
+    &lt;format property=&quot;date&quot; pattern=&quot;yyyy/MM/dd&quot; /&gt;
+    &lt;format property=&quot;time&quot; pattern=&quot;HH:mm:ss&quot; /&gt;
+  &lt;/tstamp&gt;
+
+  &lt;target name=&quot;all&quot; depends=&quot;jar&quot; description=&quot;build all&quot;&gt;
+    &lt;echo&gt;on ${date} at ${time}&lt;/echo&gt;
+  &lt;/target&gt;
+
+  &lt;target name=&quot;prepare&quot; depends=&quot;&quot; description=&quot;prepare to compile&quot;&gt;
+    &lt;mkdir dir=&quot;${destdir}&quot; /&gt;
+    &lt;echo&gt;on ${date} at ${time}&lt;/echo&gt;
+  &lt;/target&gt;
+
+  &lt;target name=&quot;compile&quot; depends=&quot;prepare&quot; description=&quot;compile all sources&quot;&gt;
+    &lt;javac
+      srcdir=&quot;${basedir}&quot;
+      destdir=&quot;${destdir}&quot;
+      includeAntRuntime=&quot;true&quot; 
+      encoding=&quot;UTF-8&quot;
+      deprecation=&quot;on&quot;
+      verbose=&quot;false&quot;&gt;
+      &lt;compilerarg value=&quot;-Xlint:unchecked&quot; /&gt;
+      &lt;classpath&gt;
+        &lt;pathelement location=&quot;.&quot; /&gt;
+      &lt;/classpath&gt;
+    &lt;/javac&gt;
+    &lt;echo&gt;on ${date} at ${time}&lt;/echo&gt;
+  &lt;/target&gt;
+
+  &lt;target name=&quot;jar&quot; depends=&quot;compile&quot; description=&quot;make jar file&quot;&gt;
+    &lt;jar
+      jarfile=&quot;${package}.jar&quot;
+      basedir=&quot;${destdir}&quot;
+      manifest=&quot;${package}.mf&quot;&gt;
+    &lt;/jar&gt;
+    &lt;echo&gt;on ${date} at ${time}&lt;/echo&gt;
+  &lt;/target&gt;
+
+  &lt;target name=&quot;clean&quot; description=&quot;cleaning&quot;&gt;
+    &lt;delete dir=&quot;${destdir}&quot; /&gt;
+    &lt;delete file=&quot;${package}.jar&quot; /&gt;
+    &lt;delete dir=&quot;${docdir}&quot; /&gt;
+    &lt;delete dir=&quot;${instdir}&quot; /&gt;
+    &lt;delete file=&quot;../${zipname}.zip&quot; /&gt;
+    &lt;delete&gt;
+      &lt;fileset dir=&quot;${package}&quot; includes=&quot;*.class&quot; /&gt;
+    &lt;/delete&gt;
+    &lt;echo&gt;on ${date} at ${time}&lt;/echo&gt;
+  &lt;/target&gt;
+
+  &lt;target name=&quot;test&quot; depends=&quot;all&quot; description=&quot;test&quot;&gt;
+    &lt;exec executable=&quot;java&quot; spawn=&quot;false&quot;&gt;
+      &lt;arg line=&quot;-Xmx512m -Xss1024k -jar ${package}.jar&quot; /&gt;
+    &lt;/exec&gt;
+    &lt;echo&gt;on ${date} at ${time}&lt;/echo&gt;
+  &lt;/target&gt;
+
+  &lt;target name=&quot;install&quot; depends=&quot;all&quot; description=&quot;install into application&quot;&gt;
+    &lt;copy file=&quot;${package}.jar&quot; todir=&quot;${instdir}&quot;/&gt;
+    &lt;exec executable=&quot;chmod&quot;&gt;
+      &lt;arg line=&quot;755 ${instdir}/../../MacOS/applet&quot; /&gt;
+    &lt;/exec&gt;
+    &lt;echo&gt;on ${date} at ${time}&lt;/echo&gt;
+  &lt;/target&gt;
+
+  &lt;target name=&quot;doc&quot; depends=&quot;all&quot; description=&quot;make document (javadoc)&quot;&gt;
+    &lt;mkdir dir=&quot;${docdir}&quot; /&gt;
+    &lt;javadoc
+      locale=&quot;en_US&quot;
+      sourcepath=&quot;${basedir}&quot;
+      destdir=&quot;${docdir}&quot;
+      packagenames=&quot;${packagenames}&quot;
+      author=&quot;true&quot;
+      version=&quot;true&quot;
+      charset=&quot;UTF-8&quot;
+      encoding=&quot;UTF-8&quot;
+      docencoding=&quot;UTF-8&quot;
+      access=&quot;private&quot;&gt;
+      &lt;doctitle&gt;${doc-title}&lt;/doctitle&gt;
+      &lt;bottom&gt;${copyright}&lt;/bottom&gt;
+    &lt;/javadoc&gt;
+    &lt;echo&gt;on ${date} at ${time}&lt;/echo&gt;
+  &lt;/target&gt;
+
+  &lt;target name=&quot;zip&quot; depends=&quot;clean&quot; description=&quot;make zip file&quot;&gt;
+    &lt;delete file=&quot;../${zipname}.zip&quot; /&gt;
+    &lt;zip destfile=&quot;../${zipname}.zip&quot;&gt;
+      &lt;zipfileset dir=&quot;.&quot; prefix=&quot;${zipname}&quot; /&gt;
+    &lt;/zip&gt;
+    &lt;echo&gt;on ${date} at ${time}&lt;/echo&gt;
+  &lt;/target&gt;
+
+&lt;/project&gt;</pre>
+<div class="belt">
+<h3><a name="Makefile.old">Makefile.old</a>（古いメイクファイル）</h3>
+</div>
+<pre>PACKAGE	= mvc
+ZIPNAME	= MVC
+INSTDIR	= MVC.app/Contents/Resources/Java
+DESTDIR	= Classes
+
+JAVAC	= env LC_ALL=en javac -encoding UTF-8 -deprecation -Xlint:unchecked
+CPATH	= -classpath .
+
+JAVA	= java -Xmx512m -Xss1024k -jar
+
+JAVADOC	= env LC_ALL=en javadoc -charset UTF-8 -encoding UTF-8 -docencoding UTF-8 -private
+JDOCDIR	= JavaDoc
+
+CLASSES	= \
+	$(PACKAGE)/Example.class \
+	$(PACKAGE)/Model.class \
+	$(PACKAGE)/View.class \
+	$(PACKAGE)/Controller.class
+
+all: $(PACKAGE).jar
+
+$(PACKAGE).jar: $(CLASSES)
+	if [ ! -e $(DESTDIR)/$(PACKAGE) ] ; then mkdir -p $(DESTDIR)/$(PACKAGE) ; fi
+	cp -p $(PACKAGE)/*.class $(DESTDIR)/$(PACKAGE)
+	if [ -e $(DESTDIR)/META-INF ] ; then rm -rf $(DESTDIR)/META-INF ; fi
+	(cd $(DESTDIR) ; jar cfm ../$(PACKAGE).jar ../$(PACKAGE).mf . )
+
+%.class: %.java
+	$(JAVAC) $(CPATH) $&lt;
+
+clean:
+	rm -f $(PACKAGE)/*.class $(PACKAGE).jar ../$(ZIPNAME).zip
+	if [ -e $(INSTDIR) ] ; then rm -f -r $(INSTDIR) ; fi
+	rm -rf ${JDOCDIR}
+
+test: all
+	$(JAVA) $(PACKAGE).jar
+
+install: all
+	if [ ! -e $(INSTDIR) ] ; then mkdir $(INSTDIR) ; fi
+	cp -p $(PACKAGE).jar $(INSTDIR)
+	chmod 755 $(INSTDIR)/../../MacOS/applet
+
+doc: all
+	${JAVADOC} -d ${JDOCDIR} $(PACKAGE)/*.java
+
+zip: javadoc clean
+	(cd .. ; zip -r $(ZIPNAME).zip $(ZIPNAME)/)</pre>
+<hr>
+<div class="right-small">Copyright 2009-2013 Project Aoki, Updated: 2013/02/27 (Created: 2009/11/11)</div>
+</body>
+</html>
