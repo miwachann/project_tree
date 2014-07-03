@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 /**
- * モデル。
+ * モデル。変更確認
  */
 public class Model extends Object
 {
