@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="MVC" default="all" basedir=".">
+
+  <property name="package" value="mvc" />
+  <property name="packagenames" value="${package}" />
+  <property name="destdir" value="./Classes" />
+  <property name="docdir" value="./JavaDoc" />
+  <property name="instdir" value="./${ant.project.name}.app/Contents/Resources/Java" />
+  <property name="copyright" value="Copyright 2008-2012 AOKI Atsushi. All Rights Reserved." />
+  <property name="zipname" value="${ant.project.name}" />
+
+  <tstamp>
+    <format property="date" pattern="yyyy/MM/dd" />
+    <format property="time" pattern="HH:mm:ss" />
+  </tstamp>
+
+  <target name="all" depends="jar" description="build all">
+    <echo>on ${date} at ${time}</echo>
+  </target>
+
+  <target name="prepare" depends="" description="prepare to compile">
+    <mkdir dir="${destdir}" />
+    <echo>on ${date} at ${time}</echo>
+  </target>
+
+  <target name="compile" depends="prepare" description="compile all sources">
+    <javac
+      fork="true"
+      srcdir="${basedir}"
+      destdir="${destdir}"
+      includeAntRuntime="true" 
+      encoding="UTF-8"
+      deprecation="on"
+      verbose="false">
+      <compilerarg value="-J-Dfile.encoding=UTF8" />
+      <compilerarg value="-Xlint:unchecked" />
+      <classpath>
+        <pathelement location="." />
+      </classpath>
+    </javac>
+    <echo>on ${date} at ${time}</echo>
+  </target>
+
+  <target name="jar" depends="compile" description="make jar file">
+    <jar
+      jarfile="${package}.jar"
+      basedir="${destdir}"
+      manifest="${package}.mf">
+    </jar>
+    <echo>on ${date} at ${time}</echo>
+  </target>
+
+  <target name="clean" description="cleaning">
+    <delete dir="${destdir}" />
+    <delete file="${package}.jar" />
+    <delete dir="${docdir}" />
+    <delete dir="${instdir}" />
+    <delete file="../${zipname}.zip" />
+    <delete>
+      <fileset dir="${package}" includes="*.class" />
+    </delete>
+    <echo>on ${date} at ${time}</echo>
+  </target>
+
+  <target name="test" depends="all" description="test">
+    <exec executable="java" spawn="false">
+      <arg line="-Dfile.encoding=UTF-8 -Xmx512m -Xss1024k -jar ${package}.jar" />
+    </exec>
+    <echo>on ${date} at ${time}</echo>
+  </target>
+
+  <target name="install" depends="all" description="install into application">
+    <copy file="${package}.jar" todir="${instdir}"/>
+    <exec executable="chmod">
+      <arg line="755 ${instdir}/../../MacOS/applet" />
+    </exec>
+    <echo>on ${date} at ${time}</echo>
+  </target>
+
+  <target name="doc" depends="all" description="make document (javadoc)">
+    <mkdir dir="${docdir}" />
+    <javadoc
+      locale="en_US"
+      sourcepath="${basedir}"
+      destdir="${docdir}"
+      packagenames="${packagenames}"
+      author="true"
+      version="true"
+      charset="UTF-8"
+      encoding="UTF-8"
+      docencoding="UTF-8"
+      access="private">
+      <doctitle>${doc-title}</doctitle>
+      <bottom>${copyright}</bottom>
+      <classpath>
+        <pathelement location="." />
+      </classpath>
+    </javadoc>
+    <echo>on ${date} at ${time}</echo>
+  </target>
+
+  <target name="zip" depends="clean" description="make zip file">
+    <delete file="../${zipname}.zip" />
+    <zip destfile="../${zipname}.zip">
+      <zipfileset dir="." prefix="${zipname}" />
+    </zip>
+    <echo>on ${date} at ${time}</echo>
+  </target>
+
+</project>
